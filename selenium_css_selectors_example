@@ -1,0 +1,10 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+CSS_selector = ".wall_post_text>a[href^='/away.']"
+driver = webdriver.Firefox()
+driver.get('http://vk.com/obrazovach')
+# links = driver.find_elements_by_css_selector('.txtBlock>a')
+links = driver.find_elements_by_css_selector(CSS_selector)
+print (links)
+for link in links:
+    link.send_keys(Keys.CONTROL + Keys.RETURN)
