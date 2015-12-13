@@ -1,0 +1,19 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+CSS_selector = ".wall_post_text"
+driver = webdriver.Firefox()
+driver.get('http://vk.com/obrazovach')
+links = driver.find_element_by_css_selector(CSS_selector)
+links.click()
+date = driver.find_element_by_css_selector(".wl_owner_head_date>a")
+while date.text != "Сегодня в 12:15":
+    arrow = driver.find_element_by_id("wk_right_arrow")
+    arrow.click()
+    date = driver.find_element_by_css_selector(".wl_owner_head_date>a")
+    post_text = driver.find_element_by_css_selector(CSS_selector).text
+    post_link = driver.find_element_by_css_selector(".wall_post_text>a")
+    # post_link.send_keys(Keys.CONTROL + Keys.RETURN)
+    # post_link.send_keys(Keys.CONTROL + Keys.TAB)
+    # print(driver.current_url)
+    print(post_text)
+    print(post_link)
